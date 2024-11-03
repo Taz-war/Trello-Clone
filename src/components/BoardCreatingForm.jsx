@@ -19,6 +19,7 @@ const BoardCreatingForm = () => {
       <form onSubmit={submitHandler}>
         <input
           type="text"
+          name="boardTitle"
           value={boardTitle}
           onChange={(e) => setBoardTitle(e.target.value)}
         />

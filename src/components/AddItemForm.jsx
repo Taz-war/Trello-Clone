@@ -18,8 +18,10 @@ const AddItemForm = ({
   return (
     <div className="form-container">
       <div className="form-card">
-        <form action="">
+        <form action="" onSubmit={(e) => createHandler(e)}>
           <textarea
+            autoFocus
+            placeholder={listForm? "Enter the list title":"Enter a title for this task"}
             className="form-textarea"
             name=""
             id=""
@@ -31,12 +33,12 @@ const AddItemForm = ({
         </form>
       </div>
       <div className="button-container">
-        <button onClick={createHandler} className="add-button">
-            {listForm?'Add List':'Add Task'}
+        <button onClick={(e)=>createHandler(e)} className="add-button">
+          {listForm ? 'Add List' : 'Add Task'}
         </button>
-        <img src={icons.crossIcon} alt="" onClick={(e)=>{
-            e.stopPropagation();
-            setEditMode(false)
+        <img src={icons.crossIcon} alt="" onClick={(e) => {
+          e.stopPropagation();
+          setEditMode(false)
         }} className="form-icon" />
       </div>
     </div>

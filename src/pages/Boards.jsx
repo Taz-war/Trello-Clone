@@ -6,8 +6,8 @@ import BoardList from '../components/BoardList'
 const Boards = () => {
   return (
     <>
-    <BoardCreatingForm />
-    <BoardList />
+      <BoardCreatingForm />
+      <BoardList />
     </>
   )
 }

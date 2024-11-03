@@ -3,10 +3,9 @@ import { useState, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ListContext } from "../contexts/List";
 import { TaskContext } from "../contexts/Task";
-
+import { BoardContext } from "../contexts/Board";
 import AddItem from "../components/AddItem";
 import AddItemForm from "../components/AddItemForm";
-import { BoardContext } from "../contexts/Board";
 
 const BoardDetails = () => {
   const [editMode, setEditMode] = useState(false);
@@ -20,7 +19,7 @@ const BoardDetails = () => {
     e.preventDefault()
     const id = Date.now();
     dispatchListAction({type:"CREATE_List",payload:{id:id,title:listTitle,boardId:boardId} })
-    dispatchBoardAction({type:'ADD_LIST_ID_TO_A_BOARD',payload:{id:boardId,listId:id}})
+    dispatchBoardAction({ type:'ADD_LIST_ID_TO_A_BOARD',payload:{id:boardId,listId:id}})
     setEditMode(false)
     setListTitle('')
   };
@@ -33,11 +32,11 @@ const BoardDetails = () => {
           <li key={taskList.id}>{taskList.title}</li>
         ))}
       {!editMode ? (
-        <AddItem listAddItem={true} setEditMode={setEditMode} />
+        <AddItem listAddItem setEditMode={setEditMode} />
       ) : (
         <AddItemForm
           setEditMode={setEditMode}
-          listForm={true}
+          listForm
           submitHandler={submitHandler}
           title={listTitle}
           onChangeHandler={(e)=>setListTitle(e.target.value)}
