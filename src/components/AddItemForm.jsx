@@ -33,7 +33,7 @@ const AddItemForm = ({
         </form>
       </div>
       <div className="button-container">
-        <button onClick={(e)=>createHandler(e)} className="add-button">
+        <button onClick={createHandler} className="add-button">
           {listForm ? 'Add List' : 'Add Task'}
         </button>
         <img src={icons.crossIcon} alt="" onClick={(e) => {

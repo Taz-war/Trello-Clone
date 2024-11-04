@@ -29,7 +29,7 @@ const TaskCard = ({ task, index }) => {
             {editMode ? (
                 <AddItemForm onChangeHandler={(e) => setTaskTitle(e.target.value)} title={taskTitle} setEditMode={setEditMode} submitHandler={submitHandler} />
             ) : (
-                <div onClick={(e) => { setEditMode(true) }} className='task-card'>
+                <div onClick={() => setEditMode(true)} className='task-card'>
                     <p>{taskTitle}</p>
                     <img src={icons.crossIcon} onClick={removeHandler} className='add-item-icon' alt="" />
                 </div>

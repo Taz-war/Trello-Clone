@@ -12,23 +12,23 @@ const TaskList = ({ taskList }) => {
     const [editMode, setEditMode] = useState(false)
 
     const { title } = taskList
-    const { tasks: allTasks, dispatchTaskAction } = useContext(TaskContext)
+    const { tasks, dispatchTaskAction } = useContext(TaskContext)
     const { dispatchListAction } = useContext(ListContext)
     const { dispatchBoardAction } = useContext(BoardContext)
 
     const submitHandler = (e) => {
         e.preventDefault()
-        const id = Date.now()
+        const id = Date.now()+""
 
-        dispatchTaskAction({ type: "CREATE_TASK", payload: { id: id, title: taskTitle, taskListId: taskList.id, boardId: taskList.boardId } })
-        dispatchListAction({ type: "ADD_TASK_ID_TO_LIST", payload: { id: taskList.id, taskId: id } })
-        dispatchBoardAction({ type: "ADD_TASK_ID_TO_BOARD", payload: { id: taskList.boardId, taskId: id } })
+        dispatchTaskAction({ type: "CREATE_TASK", payload: { id: id, title: taskTitle, listId: taskList.id, boardId: taskList.boardId } })
+        dispatchListAction({ type: "ADD_TASK_ID_TO_A_LIST", payload: { id: taskList.id, taskId: id } })
+        dispatchBoardAction({ type: "ADD_TASK_ID_TO_A_BOARD", payload: { id: taskList.boardId, taskId: id } })
         setTaskTitle("")
         setEditMode(false)
     }
 
     const removeListHandler = () => {
-        dispatchListAction({ type: "REMOVE_LIST", payload: { id: taskList.id } })
+        dispatchListAction({ type: "REMOVE_LIST", payload: taskList.id })
         dispatchBoardAction({ type: "REMOVE_LIST_ID_FROM_A_BOARD", payload: { id: taskList.boardId, listId: taskList.id } })
 
     }
@@ -40,7 +40,7 @@ const TaskList = ({ taskList }) => {
             </div>
             {
                 taskList.tasks.map(item => {
-                    return allTasks.find(i => i.id === item)
+                    return tasks.find(i => i.id === item)
                 })?.map((task, index) => (
                     <TaskCard index={index} id={task.id} taskList={taskList} task={task} key={task.id} />
                 ))
