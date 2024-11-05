@@ -29,7 +29,7 @@ const BoardItem = ({ board }) => {
   return (
     <div className="board-box d-flex flex-direction-column">
       <div className="d-flex justify-content-between">
-        <h5 className="title-gap">{board.title}</h5>
+        <h5 className='title-gap'>{board.title}</h5>
         <img onClick={removeBoardHandler} className="add-item-icon" alt="Delete Board" src={icons.crossIcon} />
       </div>
       <p className="title-gap align-self-flex-end">This board has {board.lists.length} List</p>

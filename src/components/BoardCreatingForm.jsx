@@ -15,7 +15,7 @@ const BoardCreatingForm = () => {
     setBoardTitle('')
   };
   return (
-    <div className="align-center m-top-md">
+    <div className='align-center m-top-md'>
       <form onSubmit={submitHandler}>
         <input
           type="text"
