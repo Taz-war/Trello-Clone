@@ -49,6 +49,8 @@ const TaskList = ({ taskList }) => {
       payload: { id: taskList.boardId, listId: taskList.id },
     });
   };
+
+  console.log(taskList)
   return (
     <div className="list-container">
       <div className="list-title-container">

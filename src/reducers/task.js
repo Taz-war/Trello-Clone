@@ -7,6 +7,7 @@ export const taskReducer = (tasks, action) => {
                 boardId: action.payload.boardId,
                 listId: action.payload.listId
             }
+            console.log({task})
 
             return [...tasks, task]
         }
